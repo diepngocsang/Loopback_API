@@ -64,14 +64,21 @@ $ npm install -g loopback-cli
 
 #### Step 4:
 Configure event stream in loopback:
-1. npm install -save event-stream
+1. 
+```bash
+npm install -save event-stream
+```
 2. Disable compression:
 server/middleware.json
-"compression": {
-  "enabled":false
-},
+
+```bash
+    "compression": {
+    "enabled":false
+    },
+```
 3. Below is a basic example using the createChangeStream() method in a LoopBack application.
 server/boot/realtime.js
+```bash
 var es = require('event-stream');
 module.exports = function(app) {
   var MyModel = app.models.Test;
@@ -79,23 +86,30 @@ module.exports = function(app) {
     changes.pipe(es.stringify()).pipe(process.stdout);
   });
 }
+```
 
 This example will print the following to the console:
-
+```bash
 {"target":1,"data":{"foo":"bar","id":1},"type":"create"}
+```
 
 4. Client-side:
+```bash
 npm install eventsource --save
-
+```
+```bash
 import * as EventSource from 'eventsource';
 
 let src = new EventSource('http://localhost:3000/api/tests/change-stream?_format=event-stream');
     src.addEventListener('data', (msg) => {
       console.log(JSON.parse(msg.data)); // the change object
     });
+```
 
 To push data, the model on the server must change; for example, if you add a new record (model instance).
 
 When this occurs, then in the browser JavaScript console, you will see (for example):
 
+```bash
 Object {target: 2, data: Object, type: "create"}
+```
