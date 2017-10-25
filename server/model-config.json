@@ -13,8 +13,41 @@
       "./mixins"
     ]
   },
-  "test": {
+  "User": {
     "dataSource": "mydb",
-    "public": true
+    "public": false
+  },
+  "account": {
+    "dataSource": "mydb",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  },
+  "AccessToken": {
+    "dataSource": "mydb",
+    "public": false,
+    "relations": {
+      "account": {
+        "type": "belongsTo",
+        "model": "account",
+        "foreignKey": "userId"
+      }
+    }
+  },
+  "ACL": {
+    "dataSource": "mydb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mydb",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mydb",
+    "public": false
   }
 }
