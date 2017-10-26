@@ -8,5 +8,24 @@
     "name": "mydb",
     "user": "",
     "connector": "mongodb"
+  },
+  "myEmail": {
+    "name": "myEmail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "betapp2018@gmail.com",
+          "pass": "Mobility@123"
+        }
+      }
+    ]
   }
 }

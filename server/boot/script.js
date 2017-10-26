@@ -6,7 +6,7 @@ module.exports = function (app) {
 
   if (!isCreated) {
     Account.create([
-      { email: 'admin@csc.com', password: 'admin' }
+      { email: 'admin@csc.com', password: 'admin', firstName: 'admin', lastName: 'admin', emailVerified: true }
     ], function (err, users) {
       if (err) throw err;
 

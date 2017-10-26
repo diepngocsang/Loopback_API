@@ -21,7 +21,7 @@
     "dataSource": "mydb",
     "public": true,
     "options": {
-      "emailVerificationRequired": false
+      "emailVerificationRequired": true
     }
   },
   "AccessToken": {
@@ -49,5 +49,8 @@
   "Role": {
     "dataSource": "mydb",
     "public": false
+  },
+  "Email": {
+    "dataSource": "myEmail"
   }
 }

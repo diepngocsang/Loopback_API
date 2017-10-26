@@ -22,7 +22,15 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"    }
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "property": "changePassword",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
   ],
   "methods": {}
 }
