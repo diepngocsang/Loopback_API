@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  var isCreated = false; //set to false to create account
+  var isCreated = true; //set to false to create account
   var Account = app.models.account;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
