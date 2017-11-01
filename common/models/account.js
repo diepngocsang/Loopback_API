@@ -200,40 +200,23 @@ module.exports = function (Account) {
     //--------FORGOT PASSWORD---------------
     // POST: http://localhost:3000/api/accounts/forgotPassword
     // INPUT: {
+    //   "email": "ldang5@csc.com",
+    //   "newPassword":"abc1234",
+    //   "confirmPassword":"abc1234"
+    // }
+    //OUTPUT: {
+    //     "success": true,
+    //     "message": "Password reset succeed!"}
+
+     // POST: http://localhost:3000/api/accounts/checkEmailExists
+    // INPUT: {
     //   "email": "ldang5@csc.com"
     // }
     //OUTPUT: {
     //     "success": true,
-    //     "message": "Password reset requested. Check your email for further instructions."}
+    //     "message": ""}
 
-
-    //send password reset link when requested
-    Account.on('resetPasswordRequest', function (info) {
-        var url = 'http://' + config.host + ':' + config.port + '/forgot-password';
-        var html = 'Click <a href="' + url + '?access_token=' +
-            info.accessToken.id + '">here</a> to reset your password';
-
-        Account.app.models.Email.send({
-            to: info.email,
-            from: 'Smart Bet',
-            subject: 'Password reset',
-            html: html
-        }, function (err) {
-            if (err) return console.log('> error sending password reset email');
-            console.log('> sending password reset email to:', info.email);
-        });
-    });
-
-    //render UI page after password reset
-    Account.afterRemote('setPassword', function (ctx, account, next) {
-        ctx.res.render('response', {
-            title: 'Password reset success',
-            content: 'Your password has been reset successfully'
-        });
-    });
-
-    Account.forgotPassword = function (ctx, email, cb) {
-        var newErrMsg, newErr;
+    Account.checkEmailExists = function (ctx, email, cb) {
         try {
             this.findOne({ where: { email: email } }, function (err, user) {
                 if (err) {
@@ -243,20 +226,11 @@ module.exports = function (Account) {
                         success: false,
                         message: "You have not create account with BetApp!",
                     });
-                } else {
-                    Account.resetPassword({
-                        email: email
-                    }, function (err) {
-                        if (err) {
-                            cb(err);
-                        }
-                        else {
-                            //send email to
-                            ctx.res.status(200).json({
-                                success: true,
-                                message: 'Password reset requested. Check your email for further instructions.'
-                            });
-                        }
+                } else {// TODO: remove password-reset.ejs
+
+                    ctx.res.status(200).json({
+                        success: true,
+                        message: "",
                     });
                 }
             });
@@ -266,13 +240,76 @@ module.exports = function (Account) {
     };
 
     Account.remoteMethod(
-        'forgotPassword',
+        'checkEmailExists',
         {
             description: "Allows a user to reset their password.",
             http: { verb: 'post' },
             accepts: [
                 { arg: 'ctx', type: 'object', http: { source: 'context' } },
                 { arg: 'email', type: 'string', required: true, description: "The user email, just for verification" }
+            ]
+        }
+    );
+
+    //send password reset link when requested
+    Account.on('resetPasswordRequest', function (info) {
+        Account.setPassword(info.accessToken.userId, info.options.newPassword, function (err) {
+            if (err) {
+                cb(err);
+            }
+        });
+    });
+
+    Account.forgotPassword = function (ctx, email, newPassword, confirmPassword, cb) {
+        if (newPassword !== confirmPassword) {
+            ctx.res.status(200).json({
+                success: false,
+                message: "New password and confirm password do not match! Please try again!",
+            });
+        }
+        else {
+            try {
+                this.findOne({ where: { email: email } }, function (err, user) {
+                    if (err) {
+                        cb(err);
+                    } else if (!user) {
+                        ctx.res.status(401).json({
+                            success: false,
+                            message: "You have not create account with BetApp!",
+                        });
+                    } else {
+                        Account.resetPassword({
+                            email: email,
+                            newPassword: newPassword
+                        }, function (err) {
+                            if (err) {
+                                cb(err);
+                            }
+                            else {
+                                ctx.res.status(200).json({
+                                    success: true,
+                                    message: 'Password reset succeed!'
+                                });
+                            }
+                        });
+                    }
+                });
+            } catch (err) {
+                cb(err);
+            }
+        }
+    };
+
+    Account.remoteMethod(
+        'forgotPassword',
+        {
+            description: "Allows a user to reset their forgot password.",
+            http: { verb: 'post' },
+            accepts: [
+                { arg: 'ctx', type: 'object', http: { source: 'context' } },
+                { arg: 'email', type: 'string', required: true, description: "The user email, just for verification" },
+                { arg: 'newPassword', type: 'string', required: true, description: "The user new password" },
+                { arg: 'confirmPassword', type: 'string', required: true, description: "The user confirm password" }
             ]
         }
     );
