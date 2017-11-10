@@ -17,17 +17,22 @@ module.exports = function (Account) {
     // }
 
     Account.beforeRemote('create', function (ctx, account, next) {
+        console.log('-- BeforeRemote Create --');
+
         //check if email is not csc
         if (ctx.req.body.email.indexOf("@csc.com") == -1) {
-            ctx.res.status(200).json({
-                success: false,
-                message: "Please use your csc email to register!"
-            });
+            let error = new Error('Please use your csc email to register!');
+            error.statusCode = 500;
+
+            next(error);
+        }else{
+            next();
         }
-        next();
     });
 
     Account.afterRemote('create', function (ctx, account, next) {
+        console.log('-- AfterRemote Create --');
+
         var options = {
             type: 'email',
             to: account.email,
@@ -38,29 +43,31 @@ module.exports = function (Account) {
             user: account
         };
 
-        account.verify(options, function (err, response) {
+        account.verify(options, function (err, response ) {
             if (err) {
-                Account.deleteById(account.id);
+                //Account.deleteById(account.id);
                 return next(err);
             }
             else {
                 ctx.res.status(200).json({
                     success: true,
-                    message: "We sent a confirm email to your inbox. Please click in the link in the email to active your account!"
+                    message: "We sent a confirm email to your inbox. Please check to active your account!"
                 });
             }
         });
     });
 
     Account.afterRemoteError('create', function (ctx, next) {
+        console.log('-- AfterRemoteError Create --');
+
         //if account already exist, then check email verified or not
         if (ctx.error.statusCode == 422 && ctx.error.message.indexOf("Email already exists") > -1) {
-            ctx.res.status(422).json({
-                success: false,
-                message: "Email already exists! If you are not activate your account, please go to your email and following instruction. "
-            });
+            let error = new Error('Email already exists! If you are not activate your account, please go to your email and following instruction.');
+            error.statusCode = 422;
+            next(error);
+        }else{
+            next();
         }
-        next();
     });
     //--------END REGISTRATION---------------
 
@@ -90,26 +97,8 @@ module.exports = function (Account) {
     //     "success": true,
     //     "message": ""}
 
-    Account.afterRemoteError('login', function (ctx, next) {
-        //if LOGIN_FAILED_EMAIL_NOT_VERIFIED
-        if (ctx.error.statusCode == 401 && ctx.error.code == "LOGIN_FAILED_EMAIL_NOT_VERIFIED") {
-            ctx.res.status(401).json({
-                success: false,
-                message: "Login failed as the email has not been verified!"
-            });
-        }
-        //if LOGIN_FAILED
-        if (ctx.error.statusCode == 401 && ctx.error.code == "LOGIN_FAILED") {
-            ctx.res.status(401).json({
-                success: false,
-                message: "Login failed! Please check again your email and password!"
-            });
-        }
-        next();
-    });
-
-
     Account.afterRemote('login', function (ctx, next) {
+        console.log('-- AfterRemote Login --');
 
         Account.findById(ctx.result.userId, function (err, response) {
             if (err) {
@@ -131,6 +120,24 @@ module.exports = function (Account) {
                 });
             }
         });
+    });
+
+    Account.afterRemoteError('login', function (ctx, next) {
+        console.log('-- AfterRemoteError Login --');
+    
+        if (ctx.error.statusCode == 401 && ctx.error.code == "LOGIN_FAILED_EMAIL_NOT_VERIFIED") {
+            //if LOGIN_FAILED_EMAIL_NOT_VERIFIED
+            let error = new Error('Login failed as the email has not been verified!');
+            error.statusCode = 401;
+            next(error);
+        }else if (ctx.error.statusCode == 401 && ctx.error.code == "LOGIN_FAILED") { 
+            //if LOGIN_FAILED
+            let error = new Error('Login failed! Please check again your email and password!');
+            error.statusCode = 401;
+            next(error);
+        }else{
+            next();
+        }
     });
     //--------END LOGIN---------------
 

@@ -1,11 +1,15 @@
 {
-  "mydb": {
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoDs": {
     "host": "127.0.0.1",
     "port": 27017,
     "url": "mongodb://127.0.0.1:27017/betapp",
     "database": "betapp",
     "password": "",
-    "name": "mydb",
+    "name": "mongoDs",
     "user": "",
     "connector": "mongodb"
   },

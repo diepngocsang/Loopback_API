@@ -14,40 +14,40 @@
     ]
   },
   "User": {
-    "dataSource": "mydb",
+    "dataSource": "db",
     "public": false
   },
-  "account": {
-    "dataSource": "mydb",
+  "Account": {
+    "dataSource": "mongoDs",
     "public": true,
     "options": {
       "emailVerificationRequired": true
     }
   },
   "AccessToken": {
-    "dataSource": "mydb",
+    "dataSource": "db",
     "public": false,
     "relations": {
       "account": {
         "type": "belongsTo",
-        "model": "account",
+        "model": "Account",
         "foreignKey": "userId"
       }
     }
   },
   "ACL": {
-    "dataSource": "mydb",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mydb",
+    "dataSource": "db",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mydb",
+    "dataSource": "db",
     "public": false
   },
   "Email": {
