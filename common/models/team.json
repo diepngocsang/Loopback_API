@@ -1,0 +1,49 @@
+{
+  "name": "Team",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "teamId": {
+      "type": "string",
+      "required": true
+    },
+    "teamName": {
+      "type": "string",
+      "required": true
+    },
+    "group": {
+      "type": "string",
+      "required": true
+    },
+    "players": {
+      "type": [
+        "string"
+      ]
+    },
+    "win": {
+      "type": "number"
+    },
+    "lose": {
+      "type": "number"
+    },
+    "draw": {
+      "type": "number"
+    },
+    "goalsAgainst": {
+      "type": "number"
+    },
+    "goalsDifference": {
+      "type": "number"
+    },
+    "currentRound": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

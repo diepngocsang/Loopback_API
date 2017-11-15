@@ -1,0 +1,45 @@
+{
+  "name": "Game",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "gameId": {
+      "type": "string",
+      "required": true
+    },
+    "teamHome": {
+      "type": "string",
+      "required": true
+    },
+    "teamAway": {
+      "type": "string",
+      "required": true
+    },
+    "odds": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true
+    },
+    "result": {
+      "type": "object"
+    },
+    "date": {
+      "type": "date"
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Settings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "defaultPoint": {
+      "type": "number",
+      "required": true
+    },
+    "minBet": {
+      "type": "number",
+      "required": true
+    },
+    "maxBet": {
+      "type": "number",
+      "required": true
+    },
+    "betBeforeTime": {
+      "type": "number",
+      "required": true
+    },
+    "pointAdded": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

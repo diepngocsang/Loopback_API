@@ -1,0 +1,28 @@
+{
+  "name": "Odd_Type",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "typeId": {
+      "type": "string",
+      "required": true
+    },
+    "typeCode": {
+      "type": "string",
+      "required": true
+    },
+    "key": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Bet",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "gameId": {
+      "type": "string",
+      "required": true
+    },
+    "odd": {
+      "type": "object",
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "required": true
+    },
+    "status": {
+      "type": "boolean",
+      "required": true
+    },
+    "winAmount": {
+      "type": "number",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "account": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

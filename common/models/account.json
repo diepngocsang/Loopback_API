@@ -6,6 +6,10 @@
     "validateUpsert": true
   },
   "properties": {
+    "userName": {
+      "type": "string",
+      "required": true
+    },
     "firstName": {
       "type": "string",
       "required": true
@@ -13,10 +17,34 @@
     "lastName": {
       "type": "string",
       "required": true
+    },
+    "winRate": {
+      "type": "number",
+      "required": false
+    },
+    "rank": {
+      "type": "number",
+      "required": false
+    },
+    "point": {
+      "type": "number",
+      "required": false
+    },
+    "teamFavorite": {
+      "type": [
+        "string"
+      ],
+      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "bets": {
+      "type": "hasMany",
+      "model": "Bet",
+      "foreignKey": "userId"
+    }
+  },
   "acls": [
     {
       "accessType": "*",
@@ -32,24 +60,24 @@
     },
     {
       "accessType": "EXECUTE",
-      "property": "changePassword",
       "principalType": "ROLE",
       "principalId": "$owner",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "changePassword"
     },
     {
       "accessType": "EXECUTE",
-      "property": "forgotPassword",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "forgotPassword"
     },
     {
       "accessType": "EXECUTE",
-      "property": "checkEmailExists",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "checkEmailExists"
     },
     {
       "principalType": "ROLE",
