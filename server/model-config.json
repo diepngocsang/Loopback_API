@@ -14,18 +14,11 @@
     ]
   },
   "User": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false
   },
-  "Account": {
-    "dataSource": "mongoDs",
-    "public": true,
-    "options": {
-      "emailVerificationRequired": true
-    }
-  },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false,
     "relations": {
       "account": {
@@ -36,19 +29,54 @@
     }
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false
+  },
+  "Account": {
+    "dataSource": "mongoDs",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "Bet": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Game": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Odd_Item": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Odd_Type": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Player": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Settings": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Team": {
+    "dataSource": "mongoDs",
+    "public": true
   },
   "Email": {
     "dataSource": "myEmail"

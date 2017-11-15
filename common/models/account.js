@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 var config = require('../../server/config.json');
+var app = require('../../server/server');
 
 module.exports = function (Account) {
     //--------REGISTRATION---------------
@@ -32,6 +33,21 @@ module.exports = function (Account) {
 
     Account.afterRemote('create', function (ctx, account, next) {
         console.log('-- AfterRemote Create --');
+
+        var Role = app.models.Role;
+        var RoleMapping = app.models.RoleMapping;
+
+        Role.findOne({where: { name: 'user' }}, function (err, role) {
+            if (err) throw err;
+
+            role.principals.create({
+                principalType: RoleMapping.USER,
+                principalId: account.id
+            }, function (err, principal) {
+                if (err) throw err;
+                console.log('Created principal user:', principal);
+            });
+        });
 
         var options = {
             type: 'email',
