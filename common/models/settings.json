@@ -42,5 +42,14 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {}
+  "methods": {},
+  "mixins":{
+    "DisableAllMethods":{
+      "expose":[ 
+        "findOne", 
+        "updateAttributes",
+        "count"
+      ]
+    }
+  }
 }

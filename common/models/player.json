@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "teamId": {
+    "teamCode": {
       "type": "string",
       "required": true
     },

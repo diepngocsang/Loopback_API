@@ -40,6 +40,7 @@ module.exports = function (Account) {
         Role.findOne({where: { name: 'user' }}, function (err, role) {
             if (err) throw err;
 
+            console.log('Get role:', role);
             role.principals.create({
                 principalType: RoleMapping.USER,
                 principalId: account.id
