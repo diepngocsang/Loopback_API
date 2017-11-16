@@ -5,6 +5,15 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "DisableAllMethods": {
+      "expose": [
+        "findOne",
+        "updateAttributes",
+        "count"
+      ]
+    }
+  },
   "properties": {
     "defaultPoint": {
       "type": "number",
@@ -42,14 +51,5 @@
       "permission": "ALLOW"
     }
   ],
-  "methods": {},
-  "mixins":{
-    "DisableAllMethods":{
-      "expose":[ 
-        "findOne", 
-        "updateAttributes",
-        "count"
-      ]
-    }
-  }
+  "methods": {}
 }

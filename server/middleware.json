@@ -1,7 +1,7 @@
 {
   "initial:before": {
     "loopback#favicon": {},
-    "loopback#token": {} 
+    "loopback#token": {}
   },
   "initial": {
     "cors": {

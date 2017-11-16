@@ -14,9 +14,13 @@
       "type": "string",
       "required": true
     },
+    "picture": {
+      "type": "string",
+      "required": false
+    },
     "group": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "players": {
       "type": [
@@ -56,7 +60,13 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
-    }  
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "user",
+      "permission": "ALLOW"
+    }
   ],
   "methods": {}
 }

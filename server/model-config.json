@@ -78,7 +78,12 @@
     "dataSource": "mongoDs",
     "public": true
   },
+  "Attachment": {
+    "dataSource": "storage",
+    "public": true
+  },
   "Email": {
     "dataSource": "myEmail"
   }
+  
 }
