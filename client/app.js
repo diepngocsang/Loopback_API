@@ -18,31 +18,42 @@ $(document).ready(function() {
 });
 
 function loginServer(email, pass){
-    $.post(apiUrl + 'accounts/login', {'email':email,'password':pass}).then(function(res) {
+    $.ajax({
+        method: "POST",
+        url: apiUrl + 'accounts/login',
+        data: { 'email':email, 'password':pass }
+    })
+    .done(function( res ) {
         console.log(res);
         if(res.success){
             $token.access_token = res.data.id;
 
             $.ajaxSetup({
-                headers: { 'access_token': res.data.id }
+                headers: { "Authorization": $token.access_token }
             });
 
             console.log($token);
             getTeams();
         }
+    })
+    .fail(function( error ) {
+        console.error(error);
     });
 }
 
 function getTeams() {
-
     var list = '';
 
-    $.get(apiUrl + 'teams').then(function(res) {
+    $.ajax({
+        method: "GET",
+        url: apiUrl + 'teams'
+    })
+    .done(function( res ) {
         res.data.forEach(function(team) {
             console.log(team);
             list += `<h2>${team.teamCode}</h2>`;
             if(team.picture) {
-                list += `<img src='/api/attachments/picture/download/${team.picture}'>`;
+                list += `<img src='/uploads/picture/${team.picture}'>`;
             }
             list += `
             <p>
@@ -50,8 +61,9 @@ function getTeams() {
             </p>`;
         });
         $teamList.html(list);
-    }).catch(function(err){
-        console.log(err);
+    })
+    .fail(function( error ) {
+        console.error(error);
     });
 }
 
@@ -59,15 +71,19 @@ function handleForm(e) {
     e.preventDefault();
 
     var team = {
-        code:$code.val(),
-        name:$name.val()
+        teamCode: $code.val(),
+        teamName: $name.val()
     }
 
     // step 1 - make the cat, this gives us something to associate with
-    $.post(apiUrl + 'teams', team).then(function(res) {
-
+    $.ajax({
+        method: "POST",
+        url: apiUrl + 'teams',
+        data: team
+    })
+    .done(function( res ) {
         //copy res since it has the id
-        team = res;
+        team = res.data;
 
         var promises = [];
 
@@ -87,24 +103,34 @@ function handleForm(e) {
                 contains a 'container' field that matches the property
                 */
                 results.forEach(function(resultOb) {
-                    if(resultOb.result.files && resultOb.result.files.file[0].container) {
-                        cat[resultOb.result.files.file[0].container] = resultOb.result.files.file[0].name;
+                    if(resultOb.data.result.files && resultOb.data.result.files.file[0].container) {
+                        team[resultOb.data.result.files.file[0].container] = resultOb.data.result.files.file[0].name;
                     }
                 });
                 console.dir(team);
                 //now update cat, we can't include the id though
                 var id = team.id;
                 delete team.id;
-                $.post(apiUrl + 'teams/'+id+'/replace', team).then(function() {
+
+                $.ajax({
+                    method: "POST",
+                    url: apiUrl + 'teams/'+id+'/replace',
+                    data: team
+                })
+                .done(function( res ) {
                     getTeams();
+                })
+                .fail(function(error){
+                    console.error(error);
                 });
             } else {
                 getTeams();
             }
         });
-
+    })
+    .fail(function(error){
+        console.error(error);
     });
-
 }
 
 //Stolen from: https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications

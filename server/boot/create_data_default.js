@@ -354,7 +354,7 @@ module.exports = {
             },{
                 teamCode: "DEN", 
                 teamName: "DENMARK", 
-                picture: "dermark.png", 
+                picture: "denmark.png", 
                 group: "H", 
                 players: [],
                 win: "",
