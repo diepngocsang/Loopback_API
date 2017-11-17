@@ -58,10 +58,6 @@
     "dataSource": "mongoDs",
     "public": true
   },
-  "Odd_Item": {
-    "dataSource": "mongoDs",
-    "public": true
-  },
   "Odd_Type": {
     "dataSource": "mongoDs",
     "public": true

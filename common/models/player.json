@@ -6,13 +6,16 @@
     "validateUpsert": true
   },
   "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
     "teamCode": {
       "type": "string",
       "required": true
     },
-    "name": {
-      "type": "string",
-      "required": true
+    "number": {
+      "type": "string"
     },
     "position": {
       "type": "string"

@@ -8,7 +8,6 @@
   "properties": {
     "gameId": {
       "type": "string",
-      "id": true,
       "required": true
     },
     "teamHome": {
@@ -21,7 +20,7 @@
     },
     "odds": {
       "type": [
-        "string"
+        "object"
       ],
       "required": true
     },
@@ -35,7 +34,7 @@
     "date": {
       "type": "date"
     },
-    "location": {
+    "stadium": {
       "type": "string"
     }
   },
