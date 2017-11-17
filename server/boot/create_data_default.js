@@ -6,7 +6,7 @@ module.exports = {
             {
                 teamCode: "RUS", 
                 teamName: "RUSSIA", 
-                picture: "uploads/images/russia.png", 
+                picture: "russia.png", 
                 group: "A", 
                 players: [],
                 win: "",
@@ -18,7 +18,7 @@ module.exports = {
             },{
                 teamCode: "BRA", 
                 teamName: "BRAZIL", 
-                picture: "uploads/images/brazil.png", 
+                picture: "brazil.png", 
                 group: "A", 
                 players: [],
                 win: "",
@@ -30,7 +30,7 @@ module.exports = {
             },{
                 teamCode: "IRN", 
                 teamName: "IRAN", 
-                picture: "uploads/images/iran.png", 
+                picture: "iran.png", 
                 group: "A", 
                 players: [],
                 win: "",
@@ -42,7 +42,7 @@ module.exports = {
             },{
                 teamCode: "JPN", 
                 teamName: "JAPAN", 
-                picture: "uploads/images/japan.png", 
+                picture: "japan.png", 
                 group: "A", 
                 players: [],
                 win: "",
@@ -54,7 +54,7 @@ module.exports = {
             },{
                 teamCode: "MEX", 
                 teamName: "MEXICO", 
-                picture: "uploads/images/mexico.png", 
+                picture: "mexico.png", 
                 group: "B", 
                 players: [],
                 win: "",
@@ -66,7 +66,7 @@ module.exports = {
             },{
                 teamCode: "BEL", 
                 teamName: "BELGIUM", 
-                picture: "uploads/images/belgium.png", 
+                picture: "belgium.png", 
                 group: "B", 
                 players: [],
                 win: "",
@@ -78,7 +78,7 @@ module.exports = {
             },{
                 teamCode: "KOR", 
                 teamName: "SOUTH KOREA", 
-                picture: "uploads/images/south_korea.png", 
+                picture: "south_korea.png", 
                 group: "B", 
                 players: [],
                 win: "",
@@ -90,7 +90,7 @@ module.exports = {
             },{
                 teamCode: "KSA", 
                 teamName: "SAUDI ARABIA", 
-                picture: "uploads/images/saudi_arabia.png", 
+                picture: "saudi_arabia.png", 
                 group: "B", 
                 players: [],
                 win: "",
@@ -102,7 +102,7 @@ module.exports = {
             },{
                 teamCode: "GER", 
                 teamName: "GERMANY", 
-                picture: "uploads/images/germany.png", 
+                picture: "germany.png", 
                 group: "C", 
                 players: [],
                 win: "",
@@ -114,7 +114,7 @@ module.exports = {
             },{
                 teamCode: "ENG", 
                 teamName: "ENGLAND", 
-                picture: "uploads/images/england.png", 
+                picture: "england.png", 
                 group: "C", 
                 players: [],
                 win: "",
@@ -126,7 +126,7 @@ module.exports = {
             },{
                 teamCode: "ESP", 
                 teamName: "SPAIN", 
-                picture: "uploads/images/spain.png", 
+                picture: "spain.png", 
                 group: "C", 
                 players: [],
                 win: "",
@@ -138,7 +138,7 @@ module.exports = {
             },{
                 teamCode: "NGA", 
                 teamName: "NIGERIA", 
-                picture: "uploads/images/nigeria.png", 
+                picture: "nigeria.png", 
                 group: "C", 
                 players: [],
                 win: "",
@@ -150,7 +150,7 @@ module.exports = {
             },{
                 teamCode: "CRC", 
                 teamName: "COSTA RICA", 
-                picture: "uploads/images/costa_rica.png", 
+                picture: "costa_rica.png", 
                 group: "D", 
                 players: [],
                 win: "",
@@ -162,7 +162,7 @@ module.exports = {
             },{
                 teamCode: "POL", 
                 teamName: "POLAND", 
-                picture: "uploads/images/poland.png", 
+                picture: "poland.png", 
                 group: "D", 
                 players: [],
                 win: "",
@@ -174,7 +174,7 @@ module.exports = {
             },{
                 teamCode: "EGY", 
                 teamName: "EGYPT", 
-                picture: "uploads/images/egypt.png", 
+                picture: "egypt.png", 
                 group: "D", 
                 players: [],
                 win: "",
@@ -186,7 +186,7 @@ module.exports = {
             },{
                 teamCode: "ISL", 
                 teamName: "ICELAND", 
-                picture: "uploads/images/iceland.png", 
+                picture: "iceland.png", 
                 group: "D", 
                 players: [],
                 win: "",
@@ -198,7 +198,7 @@ module.exports = {
             },{
                 teamCode: "SRB", 
                 teamName: "SERBIA", 
-                picture: "uploads/images/serbia.png", 
+                picture: "serbia.png", 
                 group: "E", 
                 players: [],
                 win: "",
@@ -210,7 +210,7 @@ module.exports = {
             },{
                 teamCode: "POR", 
                 teamName: "PORTUGAL", 
-                picture: "uploads/images/portugal.png", 
+                picture: "portugal.png", 
                 group: "E", 
                 players: [],
                 win: "",
@@ -222,7 +222,7 @@ module.exports = {
             },{
                 teamCode: "FRA", 
                 teamName: "FRANCE", 
-                picture: "uploads/images/france.png", 
+                picture: "france.png", 
                 group: "E", 
                 players: [],
                 win: "",
@@ -234,7 +234,7 @@ module.exports = {
             },{
                 teamCode: "URU", 
                 teamName: "URUGUAY", 
-                picture: "uploads/images/uruguay.png", 
+                picture: "uruguay.png", 
                 group: "E", 
                 players: [],
                 win: "",
@@ -246,7 +246,7 @@ module.exports = {
             },{
                 teamCode: "ARG", 
                 teamName: "ARGENTINA", 
-                picture: "uploads/images/argentina.png", 
+                picture: "argentina.png", 
                 group: "F", 
                 players: [],
                 win: "",
@@ -258,7 +258,7 @@ module.exports = {
             },{
                 teamCode: "COL", 
                 teamName: "COLOMBIA", 
-                picture: "uploads/images/colombia.png", 
+                picture: "colombia.png", 
                 group: "F", 
                 players: [],
                 win: "",
@@ -270,7 +270,7 @@ module.exports = {
             },{
                 teamCode: "PAN", 
                 teamName: "PANAMA", 
-                picture: "uploads/images/panama.png", 
+                picture: "panama.png", 
                 group: "F", 
                 players: [],
                 win: "",
@@ -282,7 +282,7 @@ module.exports = {
             },{
                 teamCode: "SEN", 
                 teamName: "SENEGAL", 
-                picture: "uploads/images/senegal.png", 
+                picture: "senegal.png", 
                 group: "F", 
                 players: [],
                 win: "",
@@ -294,7 +294,7 @@ module.exports = {
             },{
                 teamCode: "MAR", 
                 teamName: "MOROCCO", 
-                picture: "uploads/images/morocco.png", 
+                picture: "morocco.png", 
                 group: "G", 
                 players: [],
                 win: "",
@@ -306,7 +306,7 @@ module.exports = {
             },{
                 teamCode: "TUN", 
                 teamName: "TUNISIA", 
-                picture: "uploads/images/tunisia.png", 
+                picture: "tunisia.png", 
                 group: "G", 
                 players: [],
                 win: "",
@@ -318,7 +318,7 @@ module.exports = {
             },{
                 teamCode: "SUI", 
                 teamName: "SWITZERLAND", 
-                picture: "uploads/images/switzerland.png", 
+                picture: "switzerland.png", 
                 group: "G", 
                 players: [],
                 win: "",
@@ -330,7 +330,7 @@ module.exports = {
             },{
                 teamCode: "CRO", 
                 teamName: "CROATIA", 
-                picture: "uploads/images/croatia.png", 
+                picture: "croatia.png", 
                 group: "G", 
                 players: [],
                 win: "",
@@ -342,7 +342,7 @@ module.exports = {
             },{
                 teamCode: "SWE", 
                 teamName: "SWEDEN", 
-                picture: "uploads/images/sweden.png", 
+                picture: "sweden.png", 
                 group: "H", 
                 players: [],
                 win: "",
@@ -354,7 +354,7 @@ module.exports = {
             },{
                 teamCode: "DEN", 
                 teamName: "DENMARK", 
-                picture: "uploads/images/dermark.png", 
+                picture: "dermark.png", 
                 group: "H", 
                 players: [],
                 win: "",
@@ -366,7 +366,7 @@ module.exports = {
             },{
                 teamCode: "AUS", 
                 teamName: "AUSTRALIA", 
-                picture: "uploads/images/australia.png", 
+                picture: "australia.png", 
                 group: "H", 
                 players: [],
                 win: "",
@@ -378,7 +378,7 @@ module.exports = {
             },{
                 teamCode: "PER", 
                 teamName: "PERU", 
-                picture: "uploads/images/peru.png", 
+                picture: "peru.png", 
                 group: "H", 
                 players: [],
                 win: "",

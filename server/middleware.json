@@ -4,6 +4,7 @@
     "loopback#token": {}
   },
   "initial": {
+    "compression": {},
     "cors": {
       "params": {
         "origin": true,
@@ -48,8 +49,8 @@
     }
   },
   "files": {
-    "loopback#static":{
-      "params":"$!../client"
+    "loopback#static": {
+      "params": "$!../client"
     }
   },
   "final": {

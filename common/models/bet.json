@@ -16,7 +16,8 @@
     },
     "status": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     },
     "winAmount": {
       "type": "number",

@@ -23,6 +23,10 @@ function loginServer(email, pass){
         if(res.success){
             $token.access_token = res.data.id;
 
+            $.ajaxSetup({
+                headers: { 'access_token': res.data.id }
+            });
+
             console.log($token);
             getTeams();
         }
@@ -33,7 +37,7 @@ function getTeams() {
 
     var list = '';
 
-    $.get(apiUrl + 'teams', $token).then(function(res) {
+    $.get(apiUrl + 'teams').then(function(res) {
         res.data.forEach(function(team) {
             console.log(team);
             list += `<h2>${team.teamCode}</h2>`;
@@ -55,7 +59,6 @@ function handleForm(e) {
     e.preventDefault();
 
     var team = {
-        access_token: $token.access_token,
         code:$code.val(),
         name:$name.val()
     }
