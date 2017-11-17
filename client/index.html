@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<style>
+		img {
+			max-width: 200px;
+			max-height: 200px;
+			float: left;
+			margin-right: 20px;
+		}
+		</style>
+	</head>
+	<body>
+
+	<h1>Teams</h1>
+
+	<div id="teamList"></div>
+
+	<br clear="all">
+	
+	<h1>Add Team</h1>
+
+	<form id="addTeamForm">
+		<p>
+			<label for="code">Fifa code:</label>
+			<input type="text" id="code" required value="RUS">
+		</p>
+
+		<p>
+			<label for="name">Name:</label>
+			<input type="text" id="name" required value="RUSSIA">
+		</p>
+
+		<p>
+			<label for="picture">Picture:</label>
+			<input type="file" id="picture" accept="images/*">
+		</p>
+		
+		<input type="submit" value="Add Team">
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="app.js"></script>
+
+	</body>
+</html>
