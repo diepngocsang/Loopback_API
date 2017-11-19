@@ -1,4 +1,4 @@
-var $code, $name, $picture, $teamList;
+var $code, $name, $group, $picture, $teamList;
 var $token = { access_token: ''};
 
 var apiUrl = 'http://localhost:3000/api/';
@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     $code = $('#code');
     $name = $('#name');
+    $group = $('#group');
     $picture = $('#picture');
     
     $teamList = $('#teamList');
@@ -53,11 +54,11 @@ function getTeams() {
             console.log(team);
             list += `<h2>${team.teamCode}</h2>`;
             if(team.picture) {
-                list += `<img src='/uploads/picture/${team.picture}'>`;
+                list += `<img src='${team.picture}'>`;
             }
             list += `
             <p>
-            ${team.teamCode} is a ${team.teamName}.
+            ${team.teamCode} is a ${team.teamName} of group ${team.group}.
             </p>`;
         });
         $teamList.html(list);
@@ -72,7 +73,8 @@ function handleForm(e) {
 
     var team = {
         teamCode: $code.val(),
-        teamName: $name.val()
+        teamName: $name.val(),
+        group: $group.val()
     }
 
     // step 1 - make the cat, this gives us something to associate with
@@ -114,7 +116,7 @@ function handleForm(e) {
 
                 $.ajax({
                     method: "POST",
-                    url: apiUrl + 'teams/'+id+'/replace',
+                    url: apiUrl + 'teams/'+id+'/updateUrlPicture',
                     data: team
                 })
                 .done(function( res ) {
