@@ -377,7 +377,7 @@ module.exports = {
                 goalsDifference: "",
                 currentRound: "" 
             }
-            /*,{
+            ,{
                 teamCode: "PER", 
                 teamName: "PERU", 
                 picture: urlPicture + "peru.png", 
@@ -389,7 +389,7 @@ module.exports = {
                 goalsAgainst: "",
                 goalsDifference: "",
                 currentRound: "" 
-            }*/
+            }
         ];
     },
     getArrGame : function (){
