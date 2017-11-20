@@ -51,9 +51,18 @@
     }
   },
   "files": {
-    "loopback#static": {
-      "params": "$!../client"
-    }
+    "loopback#static": [
+      {
+        "name": "client",
+        "paths": ["/"],
+        "params": "$!../client"
+      },
+      {
+        "name": "uploads",
+        "paths": ["/uploads"],
+        "params": "$!../uploads"
+      }
+    ]
   },
   "final": {
     "loopback#urlNotFound": {}

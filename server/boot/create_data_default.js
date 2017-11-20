@@ -1,8 +1,12 @@
 'use strict';
+var config = require('../../server/config.json');
+var app = require('../../server/server');
 
 module.exports = {
     getArrTeam: function(){
-        var urlPicture = "http://localhost:3000/uploads/picture/"
+        var baseUrl = app.get('url').replace(/\/$/, '');
+        var urlPicture = baseUrl + config.urlPicture;
+        
         return [
             {
                 teamCode: "RUS", 
