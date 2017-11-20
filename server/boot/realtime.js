@@ -4,4 +4,10 @@ module.exports = function(app) {
   // MyModel.createChangeStream(function(err, changes) {
   //   changes.pipe(es.stringify()).pipe(process.stdout);
   // });
+
+  // var Team = app.models.Team;
+  // Team.createChangeStream(function(err, changes) {
+  //   changes.pipe(es.stringify()).pipe(process.stdout);
+  // });
+  
 }

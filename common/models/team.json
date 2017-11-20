@@ -66,6 +66,13 @@
       "principalType": "ROLE",
       "principalId": "user",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "createChangeStream"
     }
   ],
   "methods": {}

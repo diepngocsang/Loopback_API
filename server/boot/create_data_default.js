@@ -377,19 +377,19 @@ module.exports = {
                 goalsDifference: "",
                 currentRound: "" 
             }
-            ,{
-                teamCode: "PER", 
-                teamName: "PERU", 
-                picture: urlPicture + "peru.png", 
-                group: "H", 
-                players: [],
-                win: "",
-                lose: "",
-                draw: "",
-                goalsAgainst: "",
-                goalsDifference: "",
-                currentRound: "" 
-            }
+            // ,{
+            //     teamCode: "PER", 
+            //     teamName: "PERU", 
+            //     picture: urlPicture + "peru.png", 
+            //     group: "H", 
+            //     players: [],
+            //     win: "",
+            //     lose: "",
+            //     draw: "",
+            //     goalsAgainst: "",
+            //     goalsDifference: "",
+            //     currentRound: "" 
+            // }
         ];
     },
     getArrGame : function (){

@@ -2,6 +2,8 @@ var $code, $name, $group, $picture, $teamList;
 var $token = { access_token: ''};
 
 var apiUrl = 'http://localhost:3000/api/';
+//var urlToChangeStream = apiUrl + 'Teams/change-stream?_format=event-stream';
+//var src = new EventSource(urlToChangeStream);
 
 $(document).ready(function() {
 
@@ -34,7 +36,16 @@ function loginServer(email, pass){
             });
 
             console.log($token);
+
+            // src.addEventListener('data', function(msg) {
+            //     var data = JSON.parse(msg.data);
+            //     console.log('Change data:');
+            //     console.log(data); // the change object
+            // });
+            
             getTeams();
+
+            
         }
     })
     .fail(function( error ) {
