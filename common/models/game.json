@@ -44,6 +44,16 @@
       "type": "hasMany",
       "model": "Bet",
       "foreignKey": ""
+    },
+    "teamHome":{
+      "type": "belongsTo",
+      "model": "Team",
+      "foreignKey": "teamHome"
+    },
+    "teamAway":{
+      "type": "belongsTo",
+      "model": "Team",
+      "foreignKey": "teamAway"
     }
   },
   "acls": [
