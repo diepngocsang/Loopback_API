@@ -407,7 +407,8 @@ module.exports = {
                     {"key":"Away","rate":1},
                     {"key":"Draw","rate":1.2},
                     {"key":"Over","rate":2},
-                    {"key":"Under","rate":1}
+                    {"key":"Under","rate":1},
+                    {"key":"TargetGoal","goal":3}
                 ],
                 "isActive": false,
                 "result": {},
@@ -423,7 +424,8 @@ module.exports = {
                     {"key":"Away","rate":1},
                     {"key":"Draw","rate":1.2},
                     {"key":"Over","rate":2},
-                    {"key":"Under","rate":1}
+                    {"key":"Under","rate":1},
+                    {"key":"TargetGoal","goal":1}
                 ],
                 "isActive": false,
                 "result": {},
