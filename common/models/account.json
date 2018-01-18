@@ -18,6 +18,10 @@
       "type": "string",
       "required": true
     },
+    "gender": {
+      "type": "string",
+      "required": true
+    },
     "winRate": {
       "type": "number",
       "required": false

@@ -132,6 +132,7 @@ module.exports = function (Account) {
                         id: ctx.result.id,
                         firstName: response.firstName,
                         lastName: response.lastName,
+                        gender: response.gender,
                         email: response.email
                     }
                 });
