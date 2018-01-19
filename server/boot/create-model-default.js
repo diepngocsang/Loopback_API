@@ -1,9 +1,9 @@
 var async = require('async');
 var dataDefault = require('./create_data_default.js');
 
-module.exports = function (app) {
+module.exports = function(app) {
     //data sources
-    var mongoDs = app.dataSources.mongoDs; 
+    var mongoDs = app.dataSources.mongoDs;
 
     var Account = app.models.Account;
     var Role = app.models.Role;
@@ -30,16 +30,16 @@ module.exports = function (app) {
     });
 
     //createRoles
-    function createRoles(cb){
-        Role.count(function(err, count){
-            if(err==null&&count==0){
+    function createRoles(cb) {
+        Role.count(function(err, count) {
+            if (err == null && count == 0) {
                 Role.create([{
                     name: 'admin'
-                },{
+                }, {
                     name: 'user'
-                }], function(err, roles){
+                }], function(err, roles) {
                     if (err) throw err;
-        
+
                     console.log('Created roles:', roles);
                 });
             }
@@ -47,20 +47,20 @@ module.exports = function (app) {
     }
 
     //create Odd_Type
-    function createOddTypes(cb){
-        Odd_Type.count(function(err, count){
-            if(err==null&&count==0){
+    function createOddTypes(cb) {
+        Odd_Type.count(function(err, count) {
+            if (err == null && count == 0) {
                 Odd_Type.create([{
                     typeId: 'TaiXiu',
-                    typeCode: 'Tai Xiu', 
+                    typeCode: 'Tai Xiu',
                     key: ['Over', 'Under']
-                },{
+                }, {
                     typeId: 'EUFull',
-                    typeCode: 'Euro Fulltime', 
+                    typeCode: 'Euro Fulltime',
                     key: ['Home', 'Away', 'Draw']
-                }], function(err, odd_types){
+                }], function(err, odd_types) {
                     if (err) throw err;
-        
+
                     console.log('Created odd_types:', odd_types);
                 });
             }
@@ -68,18 +68,18 @@ module.exports = function (app) {
     }
 
     //create Settings
-    function createSettings(cb){
-        Settings.count(function(err, count){
-            if(err==null&&count==0){
+    function createSettings(cb) {
+        Settings.count(function(err, count) {
+            if (err == null && count == 0) {
                 Settings.create([{
-                    defaultPoint: 1000, 
-                    minBet: 10, 
-                    maxBet: 100, 
-                    betBeforeTime: 2*60*60, 
-                    pointAdded: 1000 
-                }], function(err, settings){
+                    defaultPoint: 1000,
+                    minBet: 10,
+                    maxBet: 100,
+                    betBeforeTime: 2 * 60 * 60,
+                    pointAdded: 1000
+                }], function(err, settings) {
                     if (err) throw err;
-        
+
                     console.log('Created settings:', settings);
                 });
             }
@@ -88,48 +88,49 @@ module.exports = function (app) {
 
     //create Admin Account
     function createAdmin(cb) {
-        Account.findOne({where: {email: 'admin@csc.com'}}, function(err, account) { 
+        Account.findOne({ where: { email: 'admin@csc.com' } }, function(err, account) {
             // console.log(err, account);
-            if(err==null&&account==null){
+            if (err == null && account == null) {
                 mongoDs.automigrate('Account', function(err) {
                     if (err) return cb(err);
-         
-                     Account.create([{
-                         email: 'admin@csc.com', 
-                         userName: 'Administrator',
-                         password: 'admin', 
-                         firstName: 'Admin', 
-                         lastName: 'The', 
-                         emailVerified: true
-                     }], function(err, users){
+
+                    Account.create([{
+                        email: 'admin@csc.com',
+                        userName: 'Administrator',
+                        password: 'admin',
+                        firstName: 'Admin',
+                        lastName: 'The',
+                        gender: 'M',
+                        emailVerified: true
+                    }], function(err, users) {
                         if (err) throw err;
-         
+
                         console.log('Created users:', users);
-                        Role.findOne({where: { name: 'admin' }}, function (err, role) {
-                             if (err) throw err;
-         
+                        Role.findOne({ where: { name: 'admin' } }, function(err, role) {
+                            if (err) throw err;
+
                             console.log(role);
-                             role.principals.create({
-                                 principalType: RoleMapping.USER,
-                                 principalId: users[0].id
-                             }, function (err, principal) {
-                                 if (err) throw err;
-                                 console.log('Created principal:', principal);
-                             });
-                         });
-                     });
+                            role.principals.create({
+                                principalType: RoleMapping.USER,
+                                principalId: users[0].id
+                            }, function(err, principal) {
+                                if (err) throw err;
+                                console.log('Created principal:', principal);
+                            });
+                        });
+                    });
                 });
             }
         });
     }
 
     //create Teams
-    function createTeams(cb){
-        Team.count(function(err, count){
-            if(err==null&&count==0){
-                Team.create( dataDefault.getArrTeam(), function(err, teams){
+    function createTeams(cb) {
+        Team.count(function(err, count) {
+            if (err == null && count == 0) {
+                Team.create(dataDefault.getArrTeam(), function(err, teams) {
                     if (err) throw err;
-        
+
                     console.log('Created teams:', teams);
                 });
             }
@@ -137,12 +138,12 @@ module.exports = function (app) {
     }
 
     //create Teams
-    function createGames(cb){
-        Game.count(function(err, count){
-            if(err==null&&count==0){
-                Game.create( dataDefault.getArrGame(), function(err, games){
+    function createGames(cb) {
+        Game.count(function(err, count) {
+            if (err == null && count == 0) {
+                Game.create(dataDefault.getArrGame(), function(err, games) {
                     if (err) throw err;
-        
+
                     console.log('Created games:', games);
                 });
             }
