@@ -72,7 +72,7 @@
     {
       "accessType": "READ",
       "principalType": "ROLE",
-      "principalId": "user",
+      "principalId": "$everyone",
       "permission": "ALLOW"
     }
   ],
